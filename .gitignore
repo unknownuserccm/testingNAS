@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# Logs
+logs/
+
+# Virtual environment
+venv/
+
+# Other common files to ignore
+*.db
