@@ -1,19 +1,15 @@
 import discord
-from discord.ext import commands
+import os
+from dotenv import load_dotenv
 
-# Create a bot instance
-intents = discord.Intents.default()  # You can enable specific intents here if needed
-bot = commands.Bot(command_prefix="!", intents=intents)
+load_dotenv()  # Load environment variables from a .env file
 
-# Event when the bot is ready
-@bot.event
+TOKEN = os.getenv("DISCORD_TOKEN")  # Get the bot token from environment variables
+
+client = discord.Client()
+
+@client.event
 async def on_ready():
-    print(f'Logged in as {bot.user}')
+    print(f'We have logged in as {client.user}')
 
-# Command that responds to !hello
-@bot.command()
-async def hello(ctx):
-    await ctx.send(f'Hello {ctx.author.display_name}!')
-
-# Run the bot with your bot token
-bot.run('DISCORD_TOKEN')  # Replace 'YOUR_BOT_TOKEN' with your actual bot token
+client.run(TOKEN)
